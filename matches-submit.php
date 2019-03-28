@@ -64,9 +64,13 @@
 			) continue;
 			if($os != $userOS) continue;
 			
-			echo "<div class='match'>
-					<img src='user.jpg'>
-				  	<p>",$name,"</p><br><br>",
+
+			$imgName = str_replace(" ","_",$name);
+			$imgName = strtolower($imgName);
+		
+			echo "<div class='match'>	 		
+				  	<p class = 'match'>",$name,"</p><br><br>
+				  	<img src='Images/Images/$imgName.jpg'>",
 				  	"<ul class='match'>
 				  		<li><strong>gender:</strong></li>
 				  		<li>",$gender,"</li>
@@ -78,7 +82,7 @@
 				  		<li>",$os,"</li>
 				  	</ul>
 				  </div>";
-			
+		
 		}
 		
 		fclose($file);

@@ -33,6 +33,14 @@
 					  $_POST["maxAgeSeeking"]
 		;
 		file_put_contents("singles.txt",$formString,FILE_APPEND);
+		
+		//to upload a pic with proper src name
+		$target_dir = "Images/";
+		$uploadName = substr($formString,0,strpos($formString,",")-1);
+		$uploadName = str_replace(" ","_",$uploadName);
+		$uploadName = strtolower($uploadName);
+		$target_file = $target_dir.basename($_FILES["filesToUpload"][$uploadName]);
+		
 	?>
 
 	<b>Thank you!</b><br><br>
