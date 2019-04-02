@@ -17,6 +17,14 @@
 	<body>
 
 	<?php
+	
+		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  			if (empty($_POST["name"])) {
+    			exit("Name is required.");
+  			} 
+  		}
+	
+	
 		//setting userInfo variable to a string equivalent to the line of text in 
 		//singles.txt that is the same as the name the user enters in matches.php
 		$file = fopen("singles.txt","r") or die("Unable to open file!");
