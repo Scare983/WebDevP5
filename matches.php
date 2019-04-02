@@ -16,6 +16,11 @@
 	
 	<body>
 	
+		<div id="bannerarea">
+			<img src="BannerLogo.png" alt="banner logo" /> <br />
+			where meek geeks meet
+		</div>
+	
 	<form action="matches-submit.php" method="get">
 		<fieldset>
 			<legend>Returning User:</legend>

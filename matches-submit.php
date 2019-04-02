@@ -69,8 +69,7 @@
 			$imgName = strtolower($imgName);
 		
 			echo "<div class='match'>	 		
-				  	<p class = 'match'>",$name,"</p><br><br>
-				  	<img src='Images/Images/$imgName.jpg'>",
+				  	<p class = 'match'><img src='Images/Images/$imgName.jpg'>",$name," </p>",
 				  	"<ul class='match'>
 				  		<li><strong>gender:</strong></li>
 				  		<li>",$gender,"</li>
