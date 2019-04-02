@@ -17,6 +17,7 @@
 	<body>
 	
 	<?php
+		
 		$formString = "\r".
 					  $_POST["name"].
 					  ", ".
@@ -35,11 +36,20 @@
 		file_put_contents("singles.txt",$formString,FILE_APPEND);
 		
 		//to upload a pic with proper src name
-		$target_dir = "Images/";
-		$uploadName = substr($formString,0,strpos($formString,",")-1);
+		$target_dir = 'uploads/';
+		$uploadName = substr($formString,0,strpos($formString,","));
 		$uploadName = str_replace(" ","_",$uploadName);
 		$uploadName = strtolower($uploadName);
-		$target_file = $target_dir.basename($_FILES["filesToUpload"][$uploadName]);
+		$uploadName = "$uploadName.jpg";
+		$target_file = $target_dir . basename($_FILES['userFile']['name']);
+		
+		if(move_uploaded_file($_FILES['userFile']['tmp_name'],$target_file)){
+		    echo "The file $uploadName has been uploaded.";
+    	} 
+    	else {
+        	echo "Sorry, there was an error uploading your file $uploadName sorry";
+    	}
+	
 		
 	?>
 

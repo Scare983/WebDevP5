@@ -21,7 +21,7 @@
 
 	<body>
 		<div id="bannerarea">
-			<img src="match.png" alt="banner logo" /> <br />
+			<img src="BannerLogo.png" alt="banner logo" /> <br />
 			where meek geeks meet
 		</div>
 
