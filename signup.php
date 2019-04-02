@@ -84,23 +84,24 @@ function test_input($data) {
 	<form action="signup-submit.php" method="post" enctype="multipart/form-data">
 		<fieldset>
 			<legend>New User Signup:</legend>
-			Name: <input type="text" name="name">
+			Name: <input type="text" name="name" size="16">
 			 <?php echo $nameErr;?><br>
 			Gender: <input type="radio" name="gender" value="M">Male&nbsp&nbsp
 					<input type="radio" name="gender" value="F" checked="true">Female
 					<?php echo $genderErr;?><br>
-			Age: <input type="text" name="age">
+			Age: <input type="text" name="age" size="6" maxlength="2">
 			<?php echo $ageErr;?><br>
-			Personality Type: <input type="text" name="personalityType">&nbsp&nbsp(<a href="http://www.humanmetrics.com/cgi-win/JTypes2.asp">Don't know your type?</a>)
+			Personality Type: <input type="text" name="personalityType" size="6" maxlength="4">&nbsp&nbsp(<a href="http://www.humanmetrics.com/cgi-win/JTypes2.asp">Don't know your type?</a>)
 			<?php echo $typeErr;?></br>
 			Favorite OS: <select name="os">
 							<option value="Windows">Windows</option>
 							<option value="Mac OS X">Mac OS X</option>
 							<option value="Linux">Linux</option>	
 						 </select></br>
-			Seeking Age: <input type="text" name="minAgeSeeking"> to <input type="text" name="maxAgeSeeking">
+			Seeking Age: <input type="text" name="minAgeSeeking" size="6" maxlength="2"> to <input type="text" name="maxAgeSeeking" size="6" maxlength="2">
 			<?php echo $minErr;?><?php echo $maxErr;?><br>
-			Photo: <input type="file" name = "userFile" accept="image/.jpg"/>
+			
+			Photo: <input type="file" name = "fileToUpload" id="fileToUpload" accept="image/.jpg"/>
 			
 			<input type="submit" value="Sign Up"/>
 							

@@ -24,7 +24,7 @@
 	<form action="matches-submit.php" method="get">
 		<fieldset>
 			<legend>Returning User:</legend>
-			Name: <input type="text" name="name"><br><br>
+			Name: <input type="text" name="name" size="16"><br><br>
 			<input type="submit" value="View My Matches">
 		</fieldset>
 	</form>
