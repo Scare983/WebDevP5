@@ -17,7 +17,7 @@
 	<body>
 	
 	
-//form validation..not working yet	
+<!--form validation..not working yet -->
 <?php
  //define variables and set to empty values
 $nameErr = $ageErr = $genderErr = $osErr = $typeErr = "";
@@ -94,10 +94,10 @@ function test_input($data) {
 			Personality Type: <input type="text" name="personalityType">&nbsp&nbsp(<a href="http://www.humanmetrics.com/cgi-win/JTypes2.asp">Don't know your type?</a>)
 			<?php echo $typeErr;?></br>
 			Favorite OS: <select name="os">
-							<option value="windows">Windows</option>
-							<option value="mac">Mac OS X</option>
-							<option value="linux">Linux</opion>	
-						</select></br>
+							<option value="Windows">Windows</option>
+							<option value="Mac OS X">Mac OS X</option>
+							<option value="Linux">Linux</option>	
+						 </select></br>
 			Seeking Age: <input type="text" name="minAgeSeeking"> to <input type="text" name="maxAgeSeeking">
 			<?php echo $minErr;?><?php echo $maxErr;?><br>
 			Photo: <input type="file" name = "userFile" accept="image/.jpg"/>

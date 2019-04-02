@@ -17,22 +17,22 @@
 	<body>
 	
 	<?php
-		
-		$formString = "\r".
+		$formString = "\n".
 					  $_POST["name"].
-					  ", ".
+					  ",".
 					  $_POST["gender"].
-					  ", ".
+					  ",".
 					  $_POST["age"].
-					  ", ".
+					  ",".
 					  $_POST["personalityType"].
-					  ", ".
+					  ",".
 					  $_POST["os"].
-					  ", ".
+					  ",".
 					  $_POST["minAgeSeeking"].
 					  ",".
 					  $_POST["maxAgeSeeking"]
 		;
+				
 		file_put_contents("singles.txt",$formString,FILE_APPEND);
 		
 		//to upload a pic with proper src name
@@ -44,12 +44,11 @@
 		$target_file = $target_dir . basename($_FILES['userFile']['name']);
 		
 		if(move_uploaded_file($_FILES['userFile']['tmp_name'],$target_file)){
-		    echo "The file $uploadName has been uploaded.";
+		    echo "The file ",$uploadName," has been uploaded.";
     	} 
     	else {
         	echo "Sorry, there was an error uploading your file $uploadName sorry";
     	}
-	
 		
 	?>
 

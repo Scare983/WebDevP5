@@ -26,6 +26,7 @@
 			$name = substr($userInfo,
 						   0,
 						   strpos($userInfo,","));
+						   
 			if(strcmp($name,$_GET["name"]) == 0) break;
 		}
 		
