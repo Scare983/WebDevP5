@@ -20,40 +20,65 @@
 		///////FORM VALIDATION//////////
 		
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
   			if (empty($_POST["name"])) {
     			exit("Name is required.");
-  			} 
-  			
+  			}
+  			if(!empty($_POST["name"])) {
+  			    $userName = $_POST["name"];
+                $singlesFile = fopen("singles.txt", "r") or die("Unable to open file!");
+  			    while(! feof($singlesFile)) {
+  			       $lineName = explode (",", fgets($singlesFile));
+  			       if($lineName[0] == $userName) {
+  			           exit("That user already exists, I am sorry you must have a twin! ");
+                   }
+                }
+                fclose($singlesFile);
+  			}
+  			if(empty($_POST["age"])) {
+                exit("Age must be a valid integer between 0 and 99 inclusive.");
+            }
   			if (intVal($_POST["age"]) < 0 || intVal($_POST["age"]) > 99){
   				exit("Age must be a valid integer between 0 and 99 inclusive.");
   			}
-  			
-  			$tempPersonalityType = $_POST["personalityType"];
-  			$p1 = substr($tempPersonalityType,0,1);
-  			$p2 = substr($tempPersonalityType,1,1);
-  			$p3 = substr($tempPersonalityType,2,1);
-  			$p4 = substr($tempPersonalityType,3,1); 
-  			if (!(($p1 == "I" || $p1 == "E") && 
-  				($p2 == "N" || $p2 == "S") &&
-  				($p3 == "F" || $p3 == "T") &&
-  				($p4 == "J" || $p4 == "P"))) {
-  					
-  					exit("Must enter valid personality type.");
+  			if(!empty($_POST["personalityType"]) || empty($_POST["personalityType"])) {
+                $tempPersonalityType = $_POST["personalityType"];
+                $p1 = substr($tempPersonalityType, 0, 1);
+                $p2 = substr($tempPersonalityType, 1, 1);
+                $p3 = substr($tempPersonalityType, 2, 1);
+                $p4 = substr($tempPersonalityType, 3, 1);
+                if (!(($p1 == "I" || $p1 == "E") &&
+                    ($p2 == "N" || $p2 == "S") &&
+                    ($p3 == "F" || $p3 == "T") &&
+                    ($p4 == "J" || $p4 == "P"))) {
+
+                    exit("Must enter valid personality type.");
+                }
+            }
+  			if (empty($_POST["minAgeSeeking"])) {
+                exit("Min age must be a valid integer between 0 and 99 inclusive.");
+             }
+  			if (!empty($_POST["minAgeSeeking"])) {
+                if (intval($_POST["minAgeSeeking"]) < 0 || intval($_POST["minAgeSeeking"]) > 99) {
+                    exit("Min age must be a valid integer between 0 and 99 inclusive.");
+                }
+            }
+
+            if (empty($_POST["maxAgeSeeking"])) {
+                exit("Max age must be a valid integer between 0 and 99 inclusive.");
+            }
+            if (!empty($_POST["maxAgeSeeking"])) {
+  			    if (intval($_POST["maxAgeSeeking"]) < 0 || intval($_POST["maxAgeSeeking"]) > 99){
+  			    	exit("Max age must be a valid integer between 0 and 99 inclusive.");
+  			    }
+                if ((intval($_POST["maxAgeSeeking"]) - intval($_POST["minAgeSeeking"])) < 0) {
+                    exit("Max age must be greater than min age.");
+                }
   			}
-  			
-  			if (intVal($_POST["minSeekingAge"]) < 0 || intVal($_POST["minSeekingAge"]) > 99){
-  				exit("Min age must be a valid integer between 0 and 99 inclusive.");
-  			}
-  			
-  			if (intVal($_POST["maxSeekingAge"]) < 0 || intVal($_POST["maxSeekingAge"]) > 99){
-  				exit("Max age must be a valid integer between 0 and 99 inclusive.");
-  			}
-  			
-  			echo $_POST["maxSeekingAge"], $_POST["minSeekingAge"];
-  			
-  			if( (intVal($_POST["maxSeekingAge"])-intVal($_POST["minSeekingAge"])) < 0 ){
-  				exit("Max age must be greater than min age.");
-  			}
+
+  			#echo $_POST["maxSeekingAge"], $_POST["minSeekingAge"];
+
+
   		}
 		
 		
@@ -62,7 +87,7 @@
 		
 		///////FORM VALIDATION////////////
 	
-		$formString = "\n".
+		$formString =
 					  $_POST["name"].
 					  ",".
 					  $_POST["gender"].
@@ -75,7 +100,8 @@
 					  ",".
 					  $_POST["minAgeSeeking"].
 					  ",".
-					  $_POST["maxAgeSeeking"]
+					  $_POST["maxAgeSeeking"] .
+                      "\r\n"
 		;
 				
 		file_put_contents("singles.txt",$formString,FILE_APPEND);

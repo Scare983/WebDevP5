@@ -49,20 +49,25 @@
 		//find and print matches
 		fclose($file);
 		$file = fopen("singles.txt","r") or die("Unable to open file!");
-		$possibleMatch = "";
+
 		
 		echo "<b class='match'>Matches for ",$userName,"</b><br>";
-		
-		while($possibleMatch = fgets($file)){
-			$str_arr = explode(",",$possibleMatch);
-			
-			$name = $str_arr[0];
-			$gender = $str_arr[1];
-			$age = $str_arr[2];
-			$personality = $str_arr[3];
-			$os = $str_arr[4];
-			
-			
+       # $possibleMatch = fgets($file);
+		while(! feof($file)){
+			$str_arr = explode(",",fgets($file));
+            $name = $gender = $age = $personality = $os = $minNum = $maxNum = "";
+           # list($name, $gender, $age, $personality, $os, $minNum, $maxNum) = explode(",", fgets($file), 7);
+
+            if(!empty($str_arr[0]))
+                $name = $str_arr[0];
+            if(!empty($str_arr[1]))
+			    $gender = $str_arr[1];
+            if(!empty($str_arr[2]))
+			    $age = $str_arr[2];
+            if(!empty($str_arr[3]))
+			    $personality = $str_arr[3];
+            if(!empty($str_arr[4]))
+			    $os = $str_arr[4];
 			if($name == $userName) continue;
 			if($gender == $userGender) continue;
 			if($age < $userMinAgeSeeking || $age > $userMaxAgeSeeking) continue;

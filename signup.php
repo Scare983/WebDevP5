@@ -20,9 +20,9 @@
 <!--form validation..not working yet -->
 <?php
  //define variables and set to empty values
-$nameErr = $ageErr = $genderErr = $osErr = $typeErr = "";
-$name = $age = $gender = $os = $min = $max = "";
-
+$nameErr = $ageErr = $genderErr = $osErr = $typeErr = $minAgeSeeking = $maxAgeSeeking = "";
+$name = $age = $gender = $os = $min = $max = $personalityType = $minErr = $maxErr = "";
+$osErr = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["name"])) {
     $nameErr = "Name is required";
