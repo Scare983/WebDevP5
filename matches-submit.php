@@ -29,7 +29,7 @@
 		//singles.txt that is the same as the name the user enters in matches.php
 		$file = fopen("singles.txt","r") or die("Unable to open file!");
 		$userInfo = "";
-		
+
 		while($userInfo = fgets($file)){
 			$name = substr($userInfo,
 						   0,
@@ -40,6 +40,9 @@
 		
 		$userInfo_arr = explode(",",$userInfo);
 		$userName = $userInfo_arr[0];
+		if(empty($userName)) {
+		    exit("Please input a valid user.  Or make an account!");
+        }
 		$userGender = $userInfo_arr[1];
 		$userMinAgeSeeking = intVal($userInfo_arr[5]);
 		$userMaxAgeSeeking = intVal($userInfo_arr[6]);
@@ -79,8 +82,7 @@
 			if($os != $userOS) continue;
 			
 
-			$imgName = str_replace(" ","_",$name);
-			$imgName = strtolower($imgName);
+			$imgName = strtolower(str_replace(" ","_",$name));
 		
 			echo "<div class='match'>	 		
 				  	<p class = 'match'><img src='Images/Images/$imgName.jpg'>",$name," </p>",

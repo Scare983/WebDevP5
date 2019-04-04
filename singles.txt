@@ -50,5 +50,5 @@ Vint Cerf,M,67,ISFP,Mac OS X,28,55
 Yukihiro Matsumoto,M,45,ENTP,Mac OS X,10,25
 Zelda,F,59,ESTP,Windows,40,62
 
-Kevin Linnane,M,21,INTJ,Linux,11,21
-Charlie Sheen,F,21,INFJ,Linux,11,21
+Kevin Linnane,M,21,INTJ,Linux,1,50
+Charlie Sheen,M,22,INTJ,Linux,1,50

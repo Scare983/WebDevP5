@@ -101,7 +101,7 @@ function test_input($data) {
 			Seeking Age: <input type="text" name="minAgeSeeking" size="6" maxlength="2"> to <input type="text" name="maxAgeSeeking" size="6" maxlength="2">
 			<?php echo $minErr;?><?php echo $maxErr;?><br>
 			
-			Photo: <input type="file" name = "fileToUpload" id="fileToUpload" accept="image/.jpg"/>
+			Photo: <input type="file" name = "fileToUpload" id="fileToUpload" accept="image/jpg"/>
 			
 			<input type="submit" value="Sign Up"/>
 							
